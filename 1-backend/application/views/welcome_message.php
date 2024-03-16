@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?php $this->load->view("includes/header"); ?>
-
+<head>
+  <?php $this->load->view("includes/header");?>
+</head>
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
+<div class="wrapper">
 
-    <?php $this->load->view("includes/navbar"); ?>
-
-    <?php $this->load->view("includes/sidebar"); ?>
+  <!-- Navbar -->
+      <?php $this->load->view("includes/navbar"); ?>
+  <!-- /.navbar -->
+  
+  <!-- Sidebar Container -->
+  <?php $this->load->view("includes/sidebar");?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -30,16 +33,15 @@
       </div>
       <!-- /.content-header -->
 
-      <!-- Main content -->
-      <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-
+            
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">DataTable</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -53,17 +55,19 @@
                     <th>İşlemler</th>
                   </tr>
                   </thead>
+
                   <tbody>
-                    <?php foreach($items as $item){ ?>
-                          <tr>
-                            <td><?php echo $item->id; ?></td>
-                            <td><?php echo $item->title; ?></td>
-                            <td><?php echo $item->is_active == 0; "Pasif";"Aktif"?></td>
-                            <td><?php echo $item->created_at; ?></td>
-                            </td>
-                          </tr>
-              
+                    <?php foreach ($items as $items) { ?>
+                      <tr>
+                        <td><?php echo $items->id; ?> </td>
+                        <td><?php echo $items->title; ?></td>
+                        <td><?php echo $items->is_active == 0 ? "Pasif" : "Aktif"; ?></td>
+                        <td><?php echo $items->created_at; ?></td>
+                        <td>Sil - Düzenle </td>
+                      </tr>
+
                     <?php } ?>
+                  
                   </tbody>
                   
                 </table>
@@ -78,8 +82,9 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-      <!-- /.content -->
+    <!-- Main content -->
+
     </div>
-    <!-- /.content-wrapper -->
-    <?php $this->load->view("includes/footer") ?>
+
+<!-- Footer -->
+<?php $this->load->view("includes/footer") ?>

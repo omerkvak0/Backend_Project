@@ -1,7 +1,4 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -136,6 +133,3 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->, initial-scale=1.0">
-    <title>Document</title>
-</head>
