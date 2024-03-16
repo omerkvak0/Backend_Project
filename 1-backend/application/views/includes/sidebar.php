@@ -14,12 +14,12 @@
           <img src="<?php echo base_url("assets")?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ömer Kavak</a>
+          <a href="#" class="d-block">Ömer Kavak (Admin)</a>
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <!-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -28,7 +28,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -36,22 +36,22 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="<?php echo base_url("Dashboard")?>" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
@@ -62,31 +62,88 @@
                   <p>Dashboard v3</p>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
+
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="<?php echo base_url("Users/index")?>" class="nav-link">
+              <p>Kullanıcılar</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Brands/index")?>" class="nav-link">
+              <p>Markalar</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Products/index")?>" class="nav-link">
+              <p>Ürünler</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Product_Categories/index")?>" class="nav-link">
+              <p>Ürün Kategorileri</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Branches/index")?>" class="nav-link">
+              <p>Şubeler</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Services/index")?>" class="nav-link">
+              <p>Hizmetler</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Testimonials/index")?>" class="nav-link">
+              <p>Bonservisler</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("References/index")?>" class="nav-link">
+              <p>Referanslar</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url("Settings/index")?>" class="nav-link">
+              <p>Ayarlar</p>
+            </a>
+          </li>
+
+        <i>
+          <!-- <li class="nav-item">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+        </i>
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Layout Options
+                Tablolar
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="<?php echo base_url("Branches/index")?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+                  <p>Şubeler</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -132,8 +189,9 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
+          </li> -->
+      <i> 
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -666,7 +724,8 @@
               <p>Informational</p>
             </a>
           </li>
-        </ul>
+        </ul> -->
+      </i>
       </nav> 
       <!-- /.sidebar-menu -->
     </div>

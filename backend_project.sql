@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 16 Mar 2024, 10:43:23
+-- Üretim Zamanı: 16 Mar 2024, 18:44:08
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.0.26
 
@@ -20,6 +20,72 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `backend_project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `branches`
+--
+
+DROP TABLE IF EXISTS `branches`;
+CREATE TABLE IF NOT EXISTS `branches` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) NOT NULL,
+  `address` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Tablo döküm verisi `branches`
+--
+
+INSERT INTO `branches` (`id`, `title`, `address`, `created_at`) VALUES
+(2, 'Şube 2', 'Şube 2 adresi falan filan.', '2024-03-16 12:32:52'),
+(1, 'Şube 1', 'Şube 1 adresi falan filan.', '2024-03-16 12:33:05');
+
+--
+-- Tetikleyiciler `branches`
+--
+DROP TRIGGER IF EXISTS `branches_delete`;
+DELIMITER $$
+CREATE TRIGGER `branches_delete` BEFORE DELETE ON `branches` FOR EACH ROW INSERT INTO branches_log (created_at, log_type, user_id, old_title, old_address)
+VALUES (NOW(), "Branches Delete", "1", OLD.title, OLD.address)
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `branches_update`;
+DELIMITER $$
+CREATE TRIGGER `branches_update` BEFORE UPDATE ON `branches` FOR EACH ROW INSERT INTO branches_log (created_at, log_type, user_id, old_title, old_address)
+VALUES (NOW(), "Branches Update", "1", OLD.title, OLD.address)
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `branches_log`
+--
+
+DROP TABLE IF EXISTS `branches_log`;
+CREATE TABLE IF NOT EXISTS `branches_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `log_type` varchar(20) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `old_title` varchar(250) NOT NULL,
+  `old_adress` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Tablo döküm verisi `branches_log`
+--
+
+INSERT INTO `branches_log` (`id`, `created_at`, `log_type`, `user_id`, `old_title`, `old_adress`) VALUES
+(1, '2024-03-16 12:18:14', 'Branches Update', 1, 'Deneme title girdim.', 'Aydın Adnan Menderes Üniversitesi'),
+(2, '2024-03-16 12:19:51', 'Branches Update', 1, 'Herhangi bir Yazı.', 'Herhangi bir adres.'),
+(4, '2024-03-16 12:21:36', 'Branches Delete', 1, 'Herhangi bir Yazı yazdım..', 'Herhangi bir adres.'),
+(5, '2024-03-16 12:33:05', 'Branches Update', 1, 'Şube 1', 'Şube adresi falan filan.');
 
 -- --------------------------------------------------------
 
@@ -44,19 +110,21 @@ CREATE TABLE IF NOT EXISTS `brands` (
 
 INSERT INTO `brands` (`id`, `img_url`, `title`, `rank`, `is_active`, `created_at`) VALUES
 (1, 'img', 'Adidas', 1, 1, '2024-03-16 10:41:27'),
-(2, 'img', 'Nike', 2, 1, '2024-03-16 10:41:48');
+(2, 'img1', 'Nike', 2, 1, '2024-03-16 10:41:48');
 
 --
 -- Tetikleyiciler `brands`
 --
 DROP TRIGGER IF EXISTS `brands_delete`;
 DELIMITER $$
-CREATE TRIGGER `brands_delete` BEFORE DELETE ON `brands` FOR EACH ROW INSERT INTO brands_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_rank, old_is_active) VALUES (NOW(), "BRANDS DELETE", "1", OLD.id, OLD.img_url, OLD.title, OLD.rank, OLD.is_active)
+CREATE TRIGGER `brands_delete` BEFORE DELETE ON `brands` FOR EACH ROW INSERT INTO brands_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_rank, old_is_active) 
+VALUES (NOW(), "Brands Delete", "1", OLD.id, OLD.img_url, OLD.title, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `brands_update`;
 DELIMITER $$
-CREATE TRIGGER `brands_update` BEFORE UPDATE ON `brands` FOR EACH ROW INSERT INTO brands_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_rank, old_is_active) VALUES (NOW(), "BRANDS UPDATE", "1", OLD.id, OLD.img_url, OLD.title, OLD.rank, OLD.is_active)
+CREATE TRIGGER `brands_update` BEFORE UPDATE ON `brands` FOR EACH ROW INSERT INTO brands_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_rank, old_is_active)
+VALUES (NOW(), "Brands Update", "1", OLD.id, OLD.img_url, OLD.title, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 
@@ -78,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `brands_log` (
   `old_rank` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `old_is_active` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `brands_log`
@@ -86,7 +154,8 @@ CREATE TABLE IF NOT EXISTS `brands_log` (
 
 INSERT INTO `brands_log` (`id`, `created_at`, `log_type`, `user_id`, `old_id`, `old_img_url`, `old_title`, `old_rank`, `old_is_active`) VALUES
 (1, '2024-03-16 10:41:05', 'BRANDS DELETE', 1, 1, 'img', 'Herhangi bir şey deneme. İkinci deneme.', '12', 0),
-(2, '2024-03-16 10:41:58', 'BRANDS UPDATE', 1, 2, 'img', 'Niki', '2', 1);
+(2, '2024-03-16 10:41:58', 'BRANDS UPDATE', 1, 2, 'img', 'Niki', '2', 1),
+(3, '2024-03-16 12:20:27', 'BRANDS UPDATE', 1, 2, 'img', 'Nike', '2', 1);
 
 -- --------------------------------------------------------
 
@@ -104,19 +173,28 @@ CREATE TABLE IF NOT EXISTS `products` (
   `is_active` tinyint NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `products`
+--
+
+INSERT INTO `products` (`id`, `img_url`, `title`, `description`, `rank`, `is_active`, `created_at`) VALUES
+(1, 'img', 'Spor takım elbise', 'spor rahat takım elbise', 10, 1, '2024-03-16 17:21:18');
 
 --
 -- Tetikleyiciler `products`
 --
 DROP TRIGGER IF EXISTS `products_delete`;
 DELIMITER $$
-CREATE TRIGGER `products_delete` BEFORE DELETE ON `products` FOR EACH ROW INSERT INTO products_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_description, old_rank, old_is_active) VALUES (NOW(), "PRODUCTS DELETE", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
+CREATE TRIGGER `products_delete` BEFORE DELETE ON `products` FOR EACH ROW INSERT INTO products_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_description, old_rank, old_is_active)
+VALUES (NOW(), "Products Delete", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `products_update`;
 DELIMITER $$
-CREATE TRIGGER `products_update` BEFORE UPDATE ON `products` FOR EACH ROW INSERT INTO products_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_description, old_rank, old_is_active) VALUES (NOW(), "PRODUCTS UPDATE", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
+CREATE TRIGGER `products_update` BEFORE UPDATE ON `products` FOR EACH ROW INSERT INTO products_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_description, old_rank, old_is_active)
+VALUES (NOW(), "Products Update", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 
@@ -140,6 +218,14 @@ CREATE TABLE IF NOT EXISTS `products_log` (
   `old_is_active` tinyint NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Tablo döküm verisi `products_log`
+--
+
+INSERT INTO `products_log` (`id`, `created_at`, `log_type`, `user_id`, `old_id`, `old_img_url`, `old_title`, `old_description`, `old_rank`, `old_is_active`) VALUES
+(0, '2024-03-16 17:18:51', 'Products Update', 1, 1, 'img', 'Spor Ayakkabı', '38-46 Numara arası ayakkabbı türü.', 12, 1),
+(0, '2024-03-16 17:20:40', 'Products Delete', 1, 1, 'img', 'Spor Ayakkabı', '38-46 Numara arası ayakkabbı türleri', 12, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +239,15 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   `is_active` tinyint NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Tablo döküm verisi `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `title`, `is_active`, `created_at`) VALUES
+(1, 'Kıyafet', 1, '2024-03-16 11:36:37'),
+(2, 'Askılık', 0, '2024-03-16 11:38:42');
 
 -- --------------------------------------------------------
 
@@ -178,12 +272,14 @@ CREATE TABLE IF NOT EXISTS `product_images` (
 --
 DROP TRIGGER IF EXISTS `product_images_delete`;
 DELIMITER $$
-CREATE TRIGGER `product_images_delete` BEFORE DELETE ON `product_images` FOR EACH ROW INSERT INTO product_images_log (created_at, log_type, user_id, old_id, old_product_id, old_rank, old_is_cover, old_img_url, old_is_active) VALUES (NOW(), "PRODUCT_IMAGES DELETE", "1", OLD.id, OLD.product_id, OLD.rank, OLD.is_cover, OLD.img_url, OLD.is_active)
+CREATE TRIGGER `product_images_delete` BEFORE DELETE ON `product_images` FOR EACH ROW INSERT INTO product_images_log (created_at, log_type, user_id, old_id, old_product_id, old_rank, old_is_cover, old_img_url, old_is_active)
+VALUES (NOW(), "Product Images Delete", "1", OLD.id, OLD.product_id, OLD.rank, OLD.is_cover, OLD.img_url, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `product_images_update`;
 DELIMITER $$
-CREATE TRIGGER `product_images_update` BEFORE UPDATE ON `product_images` FOR EACH ROW INSERT INTO product_images_log (created_at, log_type, user_id, old_id, old_product_id, old_rank, old_is_cover, old_img_url, old_is_active) VALUES (NOW(), "PRODUCT_IMAGES UPDATE", "1", OLD.id, OLD.product_id, OLD.rank, OLD.is_cover, OLD.img_url, OLD.is_active)
+CREATE TRIGGER `product_images_update` BEFORE UPDATE ON `product_images` FOR EACH ROW INSERT INTO product_images_log (created_at, log_type, user_id, old_id, old_product_id, old_rank, old_is_cover, old_img_url, old_is_active)
+VALUES (NOW(), "Product Images Update", "1", OLD.id, OLD.product_id, OLD.rank, OLD.is_cover, OLD.img_url, OLD.is_active)
 $$
 DELIMITER ;
 
@@ -231,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `references` (
 DROP TRIGGER IF EXISTS `references_delete`;
 DELIMITER $$
 CREATE TRIGGER `references_delete` BEFORE DELETE ON `references` FOR EACH ROW INSERT INTO `references_log` (created_at, log_type, user_id, old_id, old_img_url, old_title, old_description, old_rank, old_is_active)
-VALUES (NOW(), "REFERENCES DELETE", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
+VALUES (NOW(), "References Delete", "1", OLD.id, OLD.img_url, OLD.title, OLD.description, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `references_update`;
@@ -286,13 +382,13 @@ CREATE TABLE IF NOT EXISTS `services` (
 DROP TRIGGER IF EXISTS `services_delete`;
 DELIMITER $$
 CREATE TRIGGER `services_delete` BEFORE DELETE ON `services` FOR EACH ROW INSERT INTO services_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_url, old_description, old_rank, old_is_active) 
-VALUES (NOW(), "SERVICES DELETE", "1", OLD.id, OLD.img_url, OLD.title, OLD.url, OLD.description, OLD.rank, OLD.is_active)
+VALUES (NOW(), "Services Delete", "1", OLD.id, OLD.img_url, OLD.title, OLD.url, OLD.description, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `services_update`;
 DELIMITER $$
 CREATE TRIGGER `services_update` BEFORE UPDATE ON `services` FOR EACH ROW INSERT INTO services_log (created_at, log_type, user_id, old_id, old_img_url, old_title, old_url, old_description, old_rank, old_is_active) 
-VALUES (NOW(), "SERVICES UPDATE", "1", OLD.id, OLD.img_url, OLD.title, OLD.url, OLD.description, OLD.rank, OLD.is_active)
+VALUES (NOW(), "Services Update", "1", OLD.id, OLD.img_url, OLD.title, OLD.url, OLD.description, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 
@@ -354,13 +450,13 @@ CREATE TABLE IF NOT EXISTS `settings` (
 DROP TRIGGER IF EXISTS `settings_delete`;
 DELIMITER $$
 CREATE TRIGGER `settings_delete` BEFORE DELETE ON `settings` FOR EACH ROW INSERT INTO settings_log (created_at, log_type, user_id, old_id, old_company_name, old_address, old_about_us, old_slogan, old_mission, old_vision, old_image_url, old_mobile_image_url, old_favicon, old_phone1, old_phone2, old_email, old_facebook, old_twitter, old_instagram, old_linkedin, old_gsm1, old_gsm2) 
-VALUES (NOW(), "SETTINGS DELETE", "1", OLD.id, OLD.company_name, OLD.address, OLD.about_us, OLD.slogan, OLD.mission, OLD.vision, OLD.img_url, OLD.mobile_image_url, OLD.favicon, OLD.phone1, OLD.phone2, OLD.email, OLD.facebook, OLD.twitter, OLD.instagram, OLD.linkedin, OLD.gsm1, OLD.gsm2)
+VALUES (NOW(), "Settings Delete", "1", OLD.id, OLD.company_name, OLD.address, OLD.about_us, OLD.slogan, OLD.mission, OLD.vision, OLD.img_url, OLD.mobile_image_url, OLD.favicon, OLD.phone1, OLD.phone2, OLD.email, OLD.facebook, OLD.twitter, OLD.instagram, OLD.linkedin, OLD.gsm1, OLD.gsm2)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `settings_update`;
 DELIMITER $$
 CREATE TRIGGER `settings_update` BEFORE UPDATE ON `settings` FOR EACH ROW INSERT INTO settings_log (created_at, log_type, user_id, old_id, old_company_name, old_address, old_about_us, old_slogan, old_mission, old_vision, old_image_url, old_mobile_image_url, old_favicon, old_phone1, old_phone2, old_email, old_facebook, old_twitter, old_instagram, old_linkedin, old_gsm1, old_gsm2) 
-VALUES (NOW(), "SETTINGS UPDATE", "1", OLD.id, OLD.company_name, OLD.address, OLD.about_us, OLD.slogan, OLD.mission, OLD.vision, OLD.img_url, OLD.mobile_image_url, OLD.favicon, OLD.phone1, OLD.phone2, OLD.email, OLD.facebook, OLD.twitter, OLD.instagram, OLD.linkedin, OLD.gsm1, OLD.gsm2)
+VALUES (NOW(), "Settings Update", "1", OLD.id, OLD.company_name, OLD.address, OLD.about_us, OLD.slogan, OLD.mission, OLD.vision, OLD.img_url, OLD.mobile_image_url, OLD.favicon, OLD.phone1, OLD.phone2, OLD.email, OLD.facebook, OLD.twitter, OLD.instagram, OLD.linkedin, OLD.gsm1, OLD.gsm2)
 $$
 DELIMITER ;
 
@@ -423,13 +519,13 @@ CREATE TABLE IF NOT EXISTS `testimonials` (
 DROP TRIGGER IF EXISTS `testimonials_delete`;
 DELIMITER $$
 CREATE TRIGGER `testimonials_delete` BEFORE DELETE ON `testimonials` FOR EACH ROW INSERT INTO testimonials_log (created_at, log_type, user_id, old_id, old_title, old_description, old_full_name, old_company, old_img_url, old_rank, old_is_active) 
-VALUES (NOW(), "TESTIMONIALS DELETE", "1", OLD.id, OLD.title, OLD.description, OLD.full_name, OLD.company, OLD.img_url, OLD.rank, OLD.is_active)
+VALUES (NOW(), "Testimonials Delete", "1", OLD.id, OLD.title, OLD.description, OLD.full_name, OLD.company, OLD.img_url, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `testimonials_update`;
 DELIMITER $$
 CREATE TRIGGER `testimonials_update` BEFORE UPDATE ON `testimonials` FOR EACH ROW INSERT INTO testimonials_log (created_at, log_type, user_id, old_id, old_title, old_description, old_full_name, old_company, old_img_url, old_rank, old_is_active) 
-VALUES (NOW(), "SETTINGS UPDATE", "1", OLD.id, OLD.title, OLD.description, OLD.full_name, OLD.company, OLD.img_url, OLD.rank, OLD.is_active)
+VALUES (NOW(), "Testimonials Update", "1", OLD.id, OLD.title, OLD.description, OLD.full_name, OLD.company, OLD.img_url, OLD.rank, OLD.is_active)
 $$
 DELIMITER ;
 
@@ -486,13 +582,13 @@ INSERT INTO `users` (`id`, `img_url`, `email`, `name`, `surname`, `password`, `i
 DROP TRIGGER IF EXISTS `users_delete`;
 DELIMITER $$
 CREATE TRIGGER `users_delete` BEFORE DELETE ON `users` FOR EACH ROW INSERT INTO users_log (created_at, log_type, user_id, old_id, old_img_url, old_email, old_name, old_name, old_surname, old_password, old_is_active) 
-VALUES (NOW(), "USERS DELETE", "1", OLD.id, old.img_url, old.email, old.name, old.surname, old.password, old.is_active)
+VALUES (NOW(), "Users Delete", "1", OLD.id, old.img_url, old.email, old.name, old.surname, old.password, old.is_active)
 $$
 DELIMITER ;
 DROP TRIGGER IF EXISTS `users_update`;
 DELIMITER $$
 CREATE TRIGGER `users_update` BEFORE UPDATE ON `users` FOR EACH ROW INSERT INTO users_log (created_at, log_type, user_id, old_id, old_img_url, old_email, old_name, old_name, old_surname, old_password, old_is_active) 
-VALUES (NOW(), "USERS UPDATE", "1", OLD.id, old.img_url, old.email, old.name, old.surname, old.password, old.is_active)
+VALUES (NOW(), "Users Update", "1", OLD.id, old.img_url, old.email, old.name, old.surname, old.password, old.is_active)
 $$
 DELIMITER ;
 
