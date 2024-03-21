@@ -24,7 +24,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
               </ol>
             </div><!-- /.col -->
@@ -44,12 +44,12 @@
               <div class="inner">
                 <h3>150</h3>
 
-                <p>New Orders</p>
+                <p>Yeni Siparişler</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Daha Fazla Bilgi<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -59,12 +59,12 @@
               <div class="inner">
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Çıkma Oranı</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Daha Fazla Bilgi<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -74,12 +74,12 @@
               <div class="inner">
                 <h3>44</h3>
 
-                <p>User Registrations</p>
+                <p>Kullanıcı Kayıtları</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Daha Fazla Bilgi<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -89,12 +89,12 @@
               <div class="inner">
                 <h3>65</h3>
 
-                <p>Unique Visitors</p>
+                <p>Ziyaretçiler</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Daha Fazla Bilgi Al<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -109,12 +109,12 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  Satışlar
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Alan</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
@@ -140,7 +140,7 @@
             <!-- DIRECT CHAT -->
             <div class="card direct-chat direct-chat-primary">
               <div class="card-header">
-                <h3 class="card-title">Direct Chat</h3>
+                <h3 class="card-title">Gelen Mesajlar</h3>
 
                 <div class="card-tools">
                   <span title="3 New Messages" class="badge badge-primary">3</span>
@@ -162,14 +162,14 @@
                   <!-- Message. Default to the left -->
                   <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
-                      <span class="direct-chat-name float-left">Alexander Pierce</span>
+                      <span class="direct-chat-name float-left">Ömer Kavak</span>
                       <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                     </div>
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" src="<?php echo base_url("assets/")?>dist/img/user1-128x128.jpg" alt="message user image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
-                      Is this template really for free? That's unbelievable!
+                    Bu şablon gerçekten ücretsiz mi? Bu inanılmaz!
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
@@ -185,7 +185,7 @@
                     <img class="direct-chat-img" src="<?php echo base_url("assets/")?>dist/img/user3-128x128.jpg" alt="message user image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
-                      You better believe it!
+                    İnansan iyi edersin!
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
@@ -194,14 +194,14 @@
                   <!-- Message. Default to the left -->
                   <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
-                      <span class="direct-chat-name float-left">Alexander Pierce</span>
+                      <span class="direct-chat-name float-left">Ömer Kavak</span>
                       <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                     </div>
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img" src="<?php echo base_url("assets/")?>dist/img/user1-128x128.jpg" alt="message user image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
-                      Working with AdminLTE on a great new app! Wanna join?
+                    Harika yeni bir uygulamada AdminLTE ile çalışıyoruz! Katılmak ister misiniz? Harika bir yeni uygulama üzerinde AdminLTE ile çalışıyoruz! Katılmak ister misin?
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
@@ -217,7 +217,7 @@
                     <img class="direct-chat-img" src="<?php echo base_url("assets/")?>dist/img/user3-128x128.jpg" alt="message user image">
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
-                      I would love to.
+                    İsterdim.
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
@@ -330,7 +330,7 @@
                   <div class="input-group">
                     <input type="text" name="message" placeholder="Type Message ..." class="form-control">
                     <span class="input-group-append">
-                      <button type="button" class="btn btn-primary">Send</button>
+                      <button type="button" class="btn btn-primary">Gönder</button>
                     </span>
                   </div>
                 </form>
@@ -344,7 +344,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
-                  To Do List
+                  Yapılacaklar Listesi
                 </h3>
 
                 <div class="card-tools">
@@ -465,7 +465,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i>Yeni Ekle</button>
               </div>
             </div>
             <!-- /.card -->
@@ -479,7 +479,7 @@
               <div class="card-header border-0">
                 <h3 class="card-title">
                   <i class="fas fa-map-marker-alt mr-1"></i>
-                  Visitors
+                  Ziyaretçi
                 </h3>
                 <!-- card tools -->
                 <div class="card-tools">
@@ -500,17 +500,17 @@
                 <div class="row">
                   <div class="col-4 text-center">
                     <div id="sparkline-1"></div>
-                    <div class="text-white">Visitors</div>
+                    <div class="text-white">Ziyaretçi</div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <div id="sparkline-2"></div>
-                    <div class="text-white">Online</div>
+                    <div class="text-white">Çervimiçi</div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <div id="sparkline-3"></div>
-                    <div class="text-white">Sales</div>
+                    <div class="text-white">Satışlar</div>
                   </div>
                   <!-- ./col -->
                 </div>
@@ -524,7 +524,7 @@
               <div class="card-header border-0">
                 <h3 class="card-title">
                   <i class="fas fa-th mr-1"></i>
-                  Sales Graph
+                  Satış Grafiği
                 </h3>
 
                 <div class="card-tools">
@@ -546,21 +546,21 @@
                     <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <div class="text-white">Mail-Orders</div>
+                    <div class="text-white">Posta Siparişleri</div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <div class="text-white">Online</div>
+                    <div class="text-white">Çevrimiçi</div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <div class="text-white">In-Store</div>
+                    <div class="text-white">Mağazada</div>
                   </div>
                   <!-- ./col -->
                 </div>
@@ -576,7 +576,7 @@
 
                 <h3 class="card-title">
                   <i class="far fa-calendar-alt"></i>
-                  Calendar
+                  Takvim
                 </h3>
                 <!-- tools card -->
                 <div class="card-tools">
@@ -586,10 +586,10 @@
                       <i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
+                      <a href="#" class="dropdown-item">Yeni Etkinlik Ekle</a>
+                      <a href="#" class="dropdown-item">Etkinlikleri Kaldır</a>
                       <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
+                      <a href="#" class="dropdown-item">Takvimi Görüntüle</a>
                     </div>
                   </div>
                   <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 16 Mar 2024, 18:44:08
+-- Üretim Zamanı: 21 Mar 2024, 19:43:56
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.0.26
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `is_active` tinyint NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `brands`
@@ -110,7 +110,8 @@ CREATE TABLE IF NOT EXISTS `brands` (
 
 INSERT INTO `brands` (`id`, `img_url`, `title`, `rank`, `is_active`, `created_at`) VALUES
 (1, 'img', 'Adidas', 1, 1, '2024-03-16 10:41:27'),
-(2, 'img1', 'Nike', 2, 1, '2024-03-16 10:41:48');
+(2, 'img', 'Nike', 2, 1, '2024-03-16 10:41:48'),
+(3, 'img', 'Puma', 3, 0, '2024-03-20 10:15:55');
 
 --
 -- Tetikleyiciler `brands`
@@ -146,16 +147,14 @@ CREATE TABLE IF NOT EXISTS `brands_log` (
   `old_rank` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `old_is_active` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `brands_log`
 --
 
 INSERT INTO `brands_log` (`id`, `created_at`, `log_type`, `user_id`, `old_id`, `old_img_url`, `old_title`, `old_rank`, `old_is_active`) VALUES
-(1, '2024-03-16 10:41:05', 'BRANDS DELETE', 1, 1, 'img', 'Herhangi bir şey deneme. İkinci deneme.', '12', 0),
-(2, '2024-03-16 10:41:58', 'BRANDS UPDATE', 1, 2, 'img', 'Niki', '2', 1),
-(3, '2024-03-16 12:20:27', 'BRANDS UPDATE', 1, 2, 'img', 'Nike', '2', 1);
+(4, '2024-03-20 10:16:47', 'Brands Update', 1, 2, 'img1', 'Nike', '2', 1);
 
 -- --------------------------------------------------------
 
@@ -239,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   `is_active` tinyint NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `product_categories`
@@ -247,7 +246,8 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
 
 INSERT INTO `product_categories` (`id`, `title`, `is_active`, `created_at`) VALUES
 (1, 'Kıyafet', 1, '2024-03-16 11:36:37'),
-(2, 'Askılık', 0, '2024-03-16 11:38:42');
+(2, 'Askılık', 0, '2024-03-16 11:38:42'),
+(3, 'Yatak', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

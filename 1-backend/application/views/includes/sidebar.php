@@ -84,7 +84,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url("Product_Categories/index")?>" class="nav-link">
+            <a href="<?php echo base_url("Product_Categories")?>" class="nav-link">
               <p>Ürün Kategorileri</p>
             </a>
           </li>
