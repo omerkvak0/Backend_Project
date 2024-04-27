@@ -12,4 +12,5 @@
         <?php $this->load->view("includes/footer"); ?>
     </div>
 </body>
+
 </html>

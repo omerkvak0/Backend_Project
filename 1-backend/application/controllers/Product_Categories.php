@@ -35,26 +35,18 @@ class Product_Categories extends CI_Controller
 	{
 		/* Sınıfın Yüklenmesi */
 		$this->load->library("form_validation");
-
 		/* Kuralların Yazılması */
 		$this->form_validation->set_rules("title", "Ürün kategori adı", "required|trim");
-
 		/* Mesajların Oluşturulması  */
 		$this->form_validation->set_message(
-			array(
-				"required" => "<b>{field}</b> alanı doldurulmalıdır."
-			)
-		);
+			array("required" => "<b>{field}</b> alanı doldurulmalıdır."));
 
 		/* Çalıştırılması */
 		$validate = $this->form_validation->run();
 
 		if ($validate) {
 			//echo "Validasyon başarılı, kayıt devam eder.";
-
-			$data = array(
-				"title" => $this->input->post("title")
-			);
+			$data = array("title" => $this->input->post("title"));
 
 			$insert = $this->Product_Categories_Model->add($data);
 
@@ -63,6 +55,7 @@ class Product_Categories extends CI_Controller
 			} else {
 				echo "Kayıt Ekleme Sırasında Bir Hata Oluştu.";
 			}
+			
 		} else {
 			//echo "Validasyon başarısız, kayıt ekleme işlemine geri döner.";
 			$viewData = new stdClass();
@@ -72,4 +65,63 @@ class Product_Categories extends CI_Controller
 			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 		}
 	}
+
+	// Sil butonuna tıklayınca olacak işlemin fonksiyonu
+	public function delete($id)
+	{
+		$data = array("id" => $id);
+		$this->Product_Categories_Model->delete($data);
+
+		//alert sistemi yapılcak.
+		redirect(base_url("Product_Categories"));
+	}
+
+	// update işleminin fonksiyonu
+	public function update($id)
+	{
+		$this->load->library("form_validation");
+		$this->form_validation->set_rules("title", "Ürün kategori adı", "required|trim");
+		$this->form_validation->set_message(
+			array(
+				"required" => "<b>{field}</b> alanı doldurulmalıdır."
+			));
+
+		$validate = $this->form_validation->run();
+
+		if ($validate) {
+			$data = array("title" => $this->input->post("title"));
+
+			$update = $this->Product_Categories_Model->update(
+				array("id" => $id),	$data);
+
+			if ($update) {
+				redirect(base_url("Product_Categories"));}
+				
+			else {echo "Hata Oluştu!";}
+
+		} else {
+			$item = $this->Product_Categories_Model->get(array("id" => $id));
+
+			$viewData = new stdClass();
+			$viewData->item = $item;
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "update";
+			$viewData->formError = true;
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
+	}
+
+	// update formunun fonsiyonu
+	public function update_form($id)
+	{
+		$item = $this->Product_Categories_Model->get(array("id" => $id));
+
+		$viewData = new stdClass();
+		$viewData->item = $item;
+		$viewData->subViewFolder = "update";
+		$viewData->viewFolder = $this->viewFolder;
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+	}
+	
+
 }

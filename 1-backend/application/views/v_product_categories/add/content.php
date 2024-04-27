@@ -20,6 +20,8 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+
+
                 <form class="form-horizontal" method="POST" action="<?php echo base_url("Product_Categories/save") ?>">
                   <div class="card-body">
                     <div class="form-group row">
@@ -39,6 +41,9 @@
                   </div>
                   <!-- /.card-footer -->
                 </form>
+
+
+                
               </div>
               <!-- /.card -->
             </div>

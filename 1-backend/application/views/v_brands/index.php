@@ -42,6 +42,9 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
+
+
+              
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -54,7 +57,6 @@
                     <th>İşlemler</th>
                   </tr>
                   </thead>
-
                   <tbody>
                     <?php foreach ($items as $items) { ?>
                       <tr>
@@ -66,12 +68,10 @@
                         <td><?php echo $items->is_active == 0 ? "Pasif" : "Aktif"; ?></td>
                         <td>Sil - Düzenle </td>
                       </tr>
-
                     <?php } ?>
-                  
                   </tbody>
-                  
                 </table>
+
               </div>
               <!-- /.card-body -->
             </div>

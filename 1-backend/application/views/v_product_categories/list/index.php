@@ -7,12 +7,9 @@
     <div class="wrapper">
 
         <?php $this->load->view("includes/navbar"); ?>
-
-
         <?php $this->load->view("includes/sidebar"); ?>
-
-
         <?php $this->load->view("{$viewFolder}/{$subViewFolder}/content"); ?>
-
-
         <?php $this->load->view("includes/footer"); ?>
+    </div>
+</body>
+</html>

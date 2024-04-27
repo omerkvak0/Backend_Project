@@ -23,13 +23,15 @@
 
                     <div class="col-md-6 text-right">
                       <a href="<?php echo base_url("Product_Categories/new_form") ?>" class="btn btn-success btn-xs mb-2 ">
-                      <i class="fas fa-plus"></i> Yeni Kategori Ekle</a>
+                        <i class="fas fa-plus"></i> Yeni Kategori Ekle</a>
                     </div>
 
                   </div>
 
                 </div>
                 <!-- /.card-header -->
+
+
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -41,21 +43,28 @@
                         <th>İşlemler</th>
                       </tr>
                     </thead>
-                    <tbody>
 
+                    <tbody>
                       <?php foreach ($items as $item) {  ?>
                         <tr>
                           <td><?php echo $item->id; ?></td>
                           <td><?php echo $item->title; ?></td>
                           <td><?php echo $item->is_active == 0 ? "Pasif" : "Aktif"; ?></td>
-                          <td><?php echo $item->created_at; ?></td>
-                          <td>SİL - GÜNCELLE</td>
+                          <td><?php echo dateTimeFormat($item->created_at); ?></td>
+                          <td>
+                            <a href="<?php echo base_url("Product_Categories/delete/$item->id") ?>" class="btn btn-danger"> Sil </a>
+
+                            <a href="<?php echo base_url("Product_Categories/update_form/$item->id"); ?>" class="btn btn-info">Güncelle</a>
+                          </td>
                         </tr>
                       <?php } ?>
-
                     </tbody>
+
                   </table>
                 </div>
+
+
+
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
