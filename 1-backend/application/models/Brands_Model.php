@@ -1,13 +1,12 @@
 <?php
 class Brands_Model extends CI_Model
 {
-
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function save($data = array())
+    public function add($data = array())
     {
         return $this->db->insert("brands", $data);
     }
@@ -16,4 +15,21 @@ class Brands_Model extends CI_Model
     {
         return $this->db->order_by($order)->get("brands")->result();
     }
+
+    // sadece istenen kaydı çeken fonksiyon
+    public function get($where = array())
+    {
+        return $this->db->where($where)->get("brands")->row();
+    }
+
+    public function delete($where = array())
+    {
+        return $this->db->where($where)->delete("brands");
+    }
+
+    public function update($where = array(), $data = array())
+    {
+        return $this->db->where($where)->update("brands", $data);
+    }
 }
+
