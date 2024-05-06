@@ -23,7 +23,7 @@
 
                     <div class="col-md-6 text-right">
                       <a href="<?php echo base_url("Brands/new_form") ?>" class="btn btn-success btn-xs mb-2 ">
-                        <i class="fas fa-plus"></i>Yeni Marka Ekle</a>
+                        <i class="fas fa-plus"></i> Yeni Marka Ekle</a>
                     </div>
 
                   </div>
@@ -38,6 +38,7 @@
                       <tr>
                         <th>ID</th>
                         <th>Marka İsmi</th>
+                        <th>Resim</th>
                         <th>Durum</th>
                         <th>Oluşturma Tarihi</th>
                         <th>İşlemler</th>
@@ -49,6 +50,7 @@
                         <tr>
                           <td><?php echo $item->id; ?></td>
                           <td><?php echo $item->title; ?></td>
+                          <td><?php echo $item->img_url; ?></td>
                           <td><?php echo $item->is_active == 0 ? "Pasif" : "Aktif"; ?></td>
                           <td><?php echo dateTimeFormat($item->created_at); ?></td>
                           <td>

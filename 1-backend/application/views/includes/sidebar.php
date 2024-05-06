@@ -66,6 +66,12 @@
           </li>
 
           <li class="nav-item">
+            <a href="<?php echo base_url("Product_Categories")?>" class="nav-link">
+              <p>Ürün Kategorileri</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="<?php echo base_url("Users/index")?>" class="nav-link">
               <p>Kullanıcılar</p>
             </a>
@@ -78,22 +84,17 @@
           </li>
 
           <li class="nav-item">
+            <a href="<?php echo base_url("Branches/index")?>" class="nav-link">
+              <p>Şubeler</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="<?php echo base_url("Products/index")?>" class="nav-link">
               <p>Ürünler</p>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="<?php echo base_url("Product_Categories")?>" class="nav-link">
-              <p>Ürün Kategorileri</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?php echo base_url("Branches/index")?>" class="nav-link">
-              <p>Şubeler</p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="<?php echo base_url("Services/index")?>" class="nav-link">
